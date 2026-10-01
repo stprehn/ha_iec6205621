@@ -1,6 +1,6 @@
 # IEC 62056-21 electricity meter Integration for Home-Assistant
 
-Custom integration for Home Assistant to connect electricity meter wia IEC 62056-21 protocol ISKRA MT174 [mode C] (https://github.com/lvzon/dsmr-p1-parser/blob/master/doc/IEC-62056-21-notes.md).
+Custom integration for Home Assistant to connect electricity meter ISKRA MT174 wia IEC 62056-21 protocol [mode C] (https://github.com/lvzon/dsmr-p1-parser/blob/master/doc/IEC-62056-21-notes.md).
 
 The integration polls every 5 minutes and provides 6 entities:
 - Energy consumption total in kWh
