@@ -1,14 +1,14 @@
 # IEC 62056-21 electricity meter Integration for Home-Assistant
 
-Custom integration for Home Assistant to connect electricity meter ISKRA MT174 wia IEC 62056-21 protocol [mode C] (https://github.com/lvzon/dsmr-p1-parser/blob/master/doc/IEC-62056-21-notes.md).
+Custom integration for Home Assistant to connect electricity meter ISKRA MT174 via IEC 62056-21 protocol [mode C] (https://github.com/lvzon/dsmr-p1-parser/blob/master/doc/IEC-62056-21-notes.md).
 
 The integration polls every 5 minutes and provides 6 entities:
 - Energy consumption total in kWh
-- Energy Consumption Tariff 1 in kWh
-- Energy Consumption Tariff 2 in kWh
+- Energy Consumption Tarif 1 in kWh
+- Energy Consumption Tarif 2 in kWh
 - Energy feed total in kWh
-- Energy Feed Tariff 1 in kWh
-- Energy Feed Tariff 2 in kWh
+- Energy Feed Tarif 1 in kWh
+- Energy Feed Tarif 2 in kWh
 
 ## Installation
 ### a) Install over HACS
@@ -17,9 +17,10 @@ The integration polls every 5 minutes and provides 6 entities:
 ### b) Install manual
 If you don't have or don't want use HACS, install it over Terminal:
 ```
-cd config/custom_components
+cd /config/custom_components
 wget https://github.com/stprehn/ha_iec6205621/archive/refs/heads/main.tar.gz
-tar --strip-components=3 -xzf main.tar.gz ha_sma_speedwire-main/custom_components/sma_speedwire
+tar --strip-components=3 -xzf main.tar.gz ha_iec6205621-main/custom_components/iec6205621
+rm main.tar.gz
 ```
 ### Restart 
 After install restart Home-Assistant under the  Configuration -> System -> Restart
