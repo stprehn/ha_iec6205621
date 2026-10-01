@@ -26,11 +26,16 @@ class IEC6205621:
         self.manufacturer = None
         self.model = None
         self.firmware_version = None
+
         self.sensors = {
             "energy_consumption_total": {"name":"Energy Consumption Total","value":None,"unit":"kWh"},
+            "energy_consumption_tariff_1": {"name":"Energy Consumption Tariff 1","value":None,"unit":"kWh"},
+            "energy_consumption_tariff_2": {"name":"Energy Consumption Tariff 2","value":None,"unit":"kWh"},
             "energy_feed_total": {"name":"Energy Feed Total","value":None,"unit":"kWh"},
+            "energy_feed_tariff_1": {"name":"Energy Feed Tariff 1","value":None,"unit":"kWh"},
+            "energy_feed_tariff_2": {"name":"Energy Feed Tariff 2","value":None,"unit":"kWh"},
         }
-
+        
         if logger:
             self.logger = logger
         else:
@@ -84,22 +89,40 @@ class IEC6205621:
         self.logger.debug("> %s", data)
         self.ser.write(data)
         self.ser.flush()
-
+        
     def parse_obis(self, data):
         if data:
             data = data.split('\r\n')
             for i in data:
-                if '1.8.0' in i:
-                    self.sensors["energy_consumption_total"]['value'] = float(re.search("\((.*?)\)", i).group(1))
-                elif '2.8.0' in i:
-                    self.sensors["energy_feed_total"]['value'] = float(re.search("\((.*?)\)", i).group(1))
-                elif '0.0.0' in i:
-                    self.serial_number = re.search("\((.*?)\)", i).group(1)
-                elif '0.0.1' in i:
-                    self.manufacturer = re.search("\((.*?)\)", i).group(1)
-                elif '0.2.0' in i:
-                    self.firmware_version = re.search("\((.*?)\)", i).group(1)
-
-
+                if '1-0:1.8.0*255' in i:
+                    self.sensors["energy_consumption_total"]['value'] = float(
+                        re.search(r"\((.*?)\)", i).group(1).split('*')[0]
+                    )
+                elif '1-0:1.8.1*255' in i:
+                    self.sensors["energy_consumption_tariff_1"]['value'] = float(
+                        re.search(r"\((.*?)\)", i).group(1).split('*')[0]
+                    )
+                elif '1-0:1.8.2*255' in i:
+                    self.sensors["energy_consumption_tariff_2"]['value'] = float(
+                        re.search(r"\((.*?)\)", i).group(1).split('*')[0]
+                    )
+                elif '1-0:2.8.0*255' in i:
+                    self.sensors["energy_feed_total"]['value'] = float(
+                        re.search(r"\((.*?)\)", i).group(1).split('*')[0]
+                    )
+                elif '1-0:2.8.1*255' in i:
+                    self.sensors["energy_feed_tariff_1"]['value'] = float(
+                        re.search(r"\((.*?)\)", i).group(1).split('*')[0]
+                    )
+                elif '1-0:2.8.2*255' in i:
+                    self.sensors["energy_feed_tariff_2"]['value'] = float(
+                        re.search(r"\((.*?)\)", i).group(1).split('*')[0]
+                    )
+                elif '0-0:0.0.0*255' in i:
+                    self.serial_number = re.search(r"\((.*?)\)", i).group(1)
+                elif '1-0:0.0.1*255' in i:
+                    self.manufacturer = re.search(r"\((.*?)\)", i).group(1)
+                elif '0-0:0.2.0*255' in i:
+                    self.firmware_version = re.search(r"\((.*?)\)", i).group(1)
 
 
