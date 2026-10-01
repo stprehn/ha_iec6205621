@@ -4,11 +4,11 @@ Custom integration for Home Assistant to connect electricity meter ISKRA MT174 v
 
 The integration polls every 5 minutes and provides 6 entities:
 - Energy consumption total in kWh
-- Energy Consumption Tarif 1 in kWh
-- Energy Consumption Tarif 2 in kWh
+- Energy Consumption Tariff 1 in kWh
+- Energy Consumption Tariff 2 in kWh
 - Energy feed total in kWh
-- Energy Feed Tarif 1 in kWh
-- Energy Feed Tarif 2 in kWh
+- Energy Feed Tariff 1 in kWh
+- Energy Feed Tariff 2 in kWh
 
 ## Installation
 ### a) Install over HACS
@@ -32,7 +32,7 @@ After install restart Home-Assistant under the  Configuration -> System -> Resta
 ## Debugging
 Add the following to `configuration.yml` to show debugging logs. Please make sure to include debug logs when filing an issue.
 
-See [logger intergration docs](https://www.home-assistant.io/integrations/logger/) for more information to configure logging.
+See [logger integration docs](https://www.home-assistant.io/integrations/logger/) for more information to configure logging.
 
 ```yml
 logger:
