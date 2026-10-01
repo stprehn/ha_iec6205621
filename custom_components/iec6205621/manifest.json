@@ -2,7 +2,7 @@
     "domain": "iec6205621",
     "name": "IEC 62056-21",
     "config_flow": true,
-    "documentation": "https://www.home-assistant.io/integrations/iec6205621",
+    "documentation": "https://github.com/stprehn/ha_iec6205621",
     "requirements": ["pyserial==3.5"],
     "codeowners": ["@stprehn"],
     "issue_tracker": "https://github.com/stprehn/ha_iec6205621/issues",
