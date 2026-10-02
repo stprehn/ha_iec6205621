@@ -23,14 +23,14 @@ tar --strip-components=3 -xzf main.tar.gz ha_iec6205621-main/custom_components/i
 rm main.tar.gz
 ```
 ### Restart 
-After install restart Home-Assistant under the  Configuration -> System -> Restart
+After install restart Home-Assistant (Configuration -> System -> Restart)
 
 ## Setup
-- After installation, you should find **iec6205621** under the Configuration -> Integrations -> Add integration.
-- Enter serial port connected to electricity meter.
+- After installation, you should find **iec6205621** under Configuration -> Integrations -> Add integration.
+- Enter serial port connected to the electricity meter.
 
 ## Debugging
-Add the following to `configuration.yml` to show debugging logs. Please make sure to include debug logs when filing an issue.
+Add the following to `configuration.yaml` to show debugging logs. Please make sure to include debug logs when filing an issue.
 
 See [logger integration docs](https://www.home-assistant.io/integrations/logger/) for more information to configure logging.
 
